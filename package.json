@@ -37,6 +37,7 @@
     "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
     "abab": "^2.0.6",
     "abbrev": "^1.1.1",
     "acorn": "^8.8.2",
