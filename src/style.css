@@ -42,7 +42,7 @@
 }
 
 .addList:focus {
-  border-color: transparent; /* Remove border on focus */
+  border-color: transparent;
   outline: none;
 }
 
@@ -87,8 +87,8 @@
 }
 
 .list-text:focus {
-  border-color: transparent; /* Remove border on focus */
-  outline: none; /* Remove outline on focus */
+  border-color: transparent;
+  outline: none;
 }
 
 .checkbox-list label {
@@ -124,15 +124,9 @@
 }
 
 .checkbox-list input[type="checkbox"]:checked + label::after {
-  content: "\2713"; /* Unicode checkmark symbol */
-
-  /* display: inline-block; */
+  content: "\2713";
   color: #fff;
   font-size: 12px;
-
-  /* line-height: 16px; */
-
-  /* vertical-align: middle; */
   margin-top: auto;
   margin-bottom: auto;
   display: flex !important;
