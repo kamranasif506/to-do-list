@@ -141,8 +141,13 @@ You can deploy this project using github pages.
 ## 🔭 Future Features <a name="future-features"></a>
 
 
-- [ ] Add Design animations
-- [ ] Enhance the styling for all screens.
+- [ ] Add Tasks dynamically
+- [ ] Remove the tasks which are completed.
+- [ ] Edit the task when click on the task.
+- [ ] Remove Bulk Task that are selected.
+- [ ] Refresh the Task list.
+- [ ] Drag and drop functionality to re-arrange the tasks.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

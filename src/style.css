@@ -6,29 +6,34 @@
   display: flex;
   justify-content: center;
 }
+
 .box {
   width: 40%;
   box-shadow: 1px 1px 2px 2px #aeabab;
   background-color: #fff;
 }
+
 .head {
   display: flex;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .form-head {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ddd;
   height: 50px;
 }
+
 .form {
   display: flex;
   height: 100%;
 }
+
 .head p {
   flex: 9;
   border: 0;
   padding-left: 2%;
 }
+
 .addList {
   flex: 9;
   border: 0;
@@ -41,15 +46,17 @@
   outline: none;
 }
 
-.click-icon,.recycle_icon {
+.click-icon,
+.recycle_icon {
   flex: 1;
   margin-top: auto;
   margin-bottom: auto;
-  color: #dddddd;
+  color: #ddd;
   display: flex !important;
   justify-content: center;
   cursor: pointer;
 }
+
 .checkbox-list {
   list-style-type: none;
   padding: 0;
@@ -57,12 +64,13 @@
 }
 
 .checkbox-list li {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .checkbox-list input[type="checkbox"] {
   display: none;
 }
+
 .list-item {
   display: flex;
 }
@@ -75,13 +83,14 @@
   padding-top: 3%;
   padding-bottom: 3%;
   font-size: 16px;
-  color: #000000;
+  color: #000;
 }
 
 .list-text:focus {
   border-color: transparent; /* Remove border on focus */
   outline: none; /* Remove outline on focus */
 }
+
 .checkbox-list label {
   display: inline-block;
   cursor: pointer;
@@ -91,7 +100,7 @@
   padding-left: 2%;
 }
 
-.checkbox-list label:before {
+.checkbox-list label::before {
   content: "";
   display: inline-block;
   width: 16px;
@@ -101,47 +110,54 @@
   margin-right: 5px;
   vertical-align: middle;
 }
+
 .list-icon {
   flex: 0.5;
   margin-top: auto;
   margin-bottom: auto;
   cursor: all-scroll;
-  color: #dddddd;
+  color: #ddd;
 }
 
-.checkbox-list input[type="checkbox"]:checked + label:before {
+.checkbox-list input[type="checkbox"]:checked + label::before {
   background-color: #00a0e9;
-  
 }
 
-.checkbox-list input[type="checkbox"]:checked + label:after {
+.checkbox-list input[type="checkbox"]:checked + label::after {
   content: "\2713"; /* Unicode checkmark symbol */
+
   /* display: inline-block; */
   color: #fff;
   font-size: 12px;
+
   /* line-height: 16px; */
+
   /* vertical-align: middle; */
   margin-top: auto;
   margin-bottom: auto;
   display: flex !important;
 }
+
 .footer {
   background: #f6f6f6;
   display: flex;
   height: 50px;
 }
+
 .clear-list {
   appearance: none;
   outline: none;
   border: none;
   background-color: transparent;
- margin: auto;
+  margin: auto;
   display: block;
 }
-.clear-list:hover{
+
+.clear-list:hover {
   text-decoration: underline;
   cursor: pointer;
 }
+
 .checked {
   display: inline-block;
   cursor: pointer;
@@ -151,9 +167,8 @@
   padding-left: 2%;
   color: #2e8ae6;
 }
+
 .underline {
-  color: rgba(0,0,0,0.45);
-  text-decoration: line-through;;
+  color: rgba(0, 0, 0, 0.45);
+  text-decoration: line-through;
 }
-
-
