@@ -98,6 +98,7 @@
   margin-top: auto;
   margin-bottom: auto;
   padding-left: 2%;
+  position: relative;
 }
 
 .checkbox-list label::before {
@@ -112,24 +113,37 @@
 }
 
 .list-icon {
-  flex: 0.5;
+  flex: 1;
   margin-top: auto;
   margin-bottom: auto;
-  cursor: all-scroll;
   color: #ddd;
+  display: flex !important;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .checkbox-list input[type="checkbox"]:checked + label::before {
-  background-color: #00a0e9;
+  background-color: transparent;
 }
 
 .checkbox-list input[type="checkbox"]:checked + label::after {
-  content: "\2713";
-  color: #fff;
-  font-size: 12px;
-  margin-top: auto;
-  margin-bottom: auto;
+  content: "\f00c";
+  color: #2196f3;
+  font-family: "Font Awesome 5 Free", sans-serif;
+  position: absolute;
+  background-color: #fff;
+  top: 0;
+  left: 29%;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.display {
   display: flex !important;
+}
+
+.hide {
+  display: none !important;
 }
 
 .footer {
@@ -165,4 +179,8 @@
 .underline {
   color: rgba(0, 0, 0, 0.45);
   text-decoration: line-through;
+}
+
+.editing {
+  background-color: #fffeca !important;
 }
