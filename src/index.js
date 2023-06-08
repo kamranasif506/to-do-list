@@ -6,7 +6,6 @@ const taskList = JSON.parse(localStorage.getItem('tasksList')) || [];
 const toDoTasks = new ToDoTasks(taskList);
 toDoTasks.displayLists(taskList);
 
-
 const addListField = document.getElementById('addList');
 const addListBtn = document.getElementById('addListBtn');
 const toDoListsDiv = document.getElementById('to-do-lists');
@@ -31,4 +30,4 @@ clearlist.addEventListener('click', () => {
 });
 recycle.addEventListener('click', () => {
   toDoTasks.refreshList();
-})
+});

@@ -124,8 +124,6 @@
 
 .checkbox-list input[type="checkbox"]:checked + label::before {
   background-color: transparent;
-}
-.checkbox-list input[type="checkbox"]:checked + label::before {
   border: none;
 }
 
@@ -139,7 +137,6 @@
   font-weight: 900;
   font-size: 20px;
 }
-
 
 .display {
   display: flex !important;

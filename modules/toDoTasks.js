@@ -44,7 +44,7 @@ class ToDoTasks {
         const parent = event.target.parentNode;
         parent.parentNode.classList.remove('editing');
         event.target.classList.remove('editing');
-        
+
         this.updateLists();
       });
 
@@ -73,7 +73,7 @@ class ToDoTasks {
       });
     });
   }
- 
+
   updateBookData(collectionData) {
     localStorage.setItem('tasksList', JSON.stringify(collectionData));
     this.addListField.value = '';
@@ -93,9 +93,9 @@ class ToDoTasks {
     this.label = this.parent.querySelector('label');
     this.label.classList.toggle('checked');
     this.index = this.parent.parentElement.getAttribute('data-index');
-    this.updateStatus(this.index,true);
-
+    this.updateStatus(this.index, true);
   }
+
   markUnComplete(event) {
     this.checkbox = event.target;
     this.parent = this.checkbox.parentElement;
@@ -103,9 +103,10 @@ class ToDoTasks {
     this.label = this.parent.querySelector('label');
     this.label.classList.toggle('checked');
     this.index = this.parent.parentElement.getAttribute('data-index');
-    this.updateStatus(this.index,false);
+    this.updateStatus(this.index, false);
   }
-  updateStatus(index,status) {
+
+  updateStatus(index, status) {
     const updatedTasks = this.toDoList.filter((tasks) => {
       if (tasks.index === parseInt(index, 10)) {
         tasks.completed = status;
@@ -153,12 +154,12 @@ class ToDoTasks {
   }
 
   clearList() {
-    const filteredArray = this.toDoList.filter(obj => obj.completed !== false);
-    console.log(filteredArray.length);
+    const filteredArray = this.toDoList.filter((obj) => obj.completed !== false);
+
     if (filteredArray.length === 0) {
-       localStorage.removeItem('tasksList');
-       this.toDoList = [];
-    }else{
+      localStorage.removeItem('tasksList');
+      this.toDoList = [];
+    } else {
       this.toDoList = this.toDoList.filter((task) => task.completed !== true);
 
       this.toDoList = this.toDoList.map((task, index) => {
@@ -167,10 +168,10 @@ class ToDoTasks {
       });
       this.updateBookData(this.toDoList);
     }
-    console.log(this.toDoList);
     this.displayLists(this.toDoList);
   }
-  refreshList(){
+
+  refreshList() {
     localStorage.removeItem('tasksList');
     this.toDoList = [];
     this.displayLists(this.toDoList);
