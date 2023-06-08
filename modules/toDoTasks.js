@@ -16,7 +16,7 @@ class ToDoTasks {
                                 <div class="list-item">
                                     <i class="fas fa-check checked" id="checkbox${task.index}" ></i> 
                                     <input  value="${task.value}" class="list-text underline">
-                                    <i class="fas fa-trash list-icon fa-ellipsis-vertical"></i>
+                                    <i class="fas fa-sharp list-icon fa-trash removeTask display"></i>
                                 </div>
                             </li>`;
       } else {
@@ -25,7 +25,7 @@ class ToDoTasks {
                                     <input type="checkbox" id="checkbox${task.index}" class="checkbox"> 
                                     <label for="checkbox${task.index}"></label>
                                     <input  value="${task.value}" class="list-text">
-                                    <i class="fas fa-sharp list-icon fa-ellipsis-vertical"></i>
+                                    <i class="fas fa-sharp list-icon fa-trash removeTask display"></i>
                                 </div>
                             </li>`;
       }
@@ -34,24 +34,22 @@ class ToDoTasks {
     this.toDoListsDiv.innerHTML = this.list;
         
     const listTextInputs = document.querySelectorAll('.list-text');
-
+    
     listTextInputs.forEach(input => {
       input.addEventListener('focus', (event) => {
         let parent = event.target.parentNode;
         parent.parentNode.classList.add('editing');
         event.target.classList.add('editing');
-        parent.querySelector('.list-icon').classList.remove('fa-ellipsis-vertical');
-        parent.querySelector('.list-icon').classList.add('fa-trash');
-        parent.querySelector('.list-icon').style.cursor = 'pointer';
+        // parent.querySelector('.list-icon').style.cursor = 'pointer';
+       
+       
       });
 
       input.addEventListener('blur', (event) => {
         let parent = event.target.parentNode;
         parent.parentNode.classList.remove('editing');
         event.target.classList.remove('editing');
-        parent.querySelector('.list-icon').classList.remove('fa-trash');
-        parent.querySelector('.list-icon').classList.add('fa-ellipsis-vertical');
-        parent.querySelector('.list-icon').style.cursor = 'all-scroll';
+        
         this.updateLists();
       });
 
@@ -66,12 +64,23 @@ class ToDoTasks {
         
       })
     });
-
+    
+   
+    const removeTaskIcons = document.querySelectorAll('.list-icon');
+    removeTaskIcons.forEach((removeTaskIcon) => {
+      removeTaskIcon.addEventListener('click', (event) => {
+        console.log('dsa');
+        const listItem = event.target.closest('li');
+        const index = listItem.getAttribute('data-index');
+        this.removeListitem(index);
+        this.updateLists();
+      });
+    });
+    
   }
   updateBookData(collectionData) {
     localStorage.setItem('tasksList', JSON.stringify(collectionData));
     this.addListField.value = '';
-    
   }
   addToList(value,completed,index) {
     this.toDoList.push({value,completed,index});
