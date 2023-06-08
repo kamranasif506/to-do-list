@@ -12,7 +12,8 @@ class ToDoTasks {
       if (task.completed) {
         this.list += ` <li data-index="${task.index}">
                                 <div class="list-item">
-                                    <i class="fas fa-check checked" id="checkbox${task.index}" ></i> 
+                                    <input type="checkbox" id="checkbox${task.index}" class="checkbox" checked="checked"> 
+                                    <label for="checkbox${task.index}"></label>
                                     <input  value="${task.value}" class="list-text underline">
                                     <i class="fas fa-sharp list-icon fa-trash removeTask display"></i>
                                 </div>
@@ -32,20 +33,18 @@ class ToDoTasks {
     this.toDoListsDiv.innerHTML = this.list;
 
     const listTextInputs = document.querySelectorAll('.list-text');
-
     listTextInputs.forEach((input) => {
       input.addEventListener('focus', (event) => {
         const parent = event.target.parentNode;
         parent.parentNode.classList.add('editing');
         event.target.classList.add('editing');
-        // parent.querySelector('.list-icon').style.cursor = 'pointer';
       });
 
       input.addEventListener('blur', (event) => {
         const parent = event.target.parentNode;
         parent.parentNode.classList.remove('editing');
         event.target.classList.remove('editing');
-
+        
         this.updateLists();
       });
 
@@ -59,8 +58,22 @@ class ToDoTasks {
         }
       });
     });
-  }
 
+    const checkboxes = document.querySelectorAll('.checkbox');
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+          this.markComplete(event);
+          // label.classList.toggle('checked');
+        } else {
+          this.markUnComplete(event);
+          // label.classList.toggle('checked');
+        }
+      });
+    });
+  }
+ 
   updateBookData(collectionData) {
     localStorage.setItem('tasksList', JSON.stringify(collectionData));
     this.addListField.value = '';
@@ -72,11 +85,36 @@ class ToDoTasks {
     this.displayLists(this.toDoList);
   }
 
-  checkBoxClick(event) {
+  markComplete(event) {
     this.checkbox = event.target;
 
     this.parent = this.checkbox.parentElement;
     this.parent.querySelector('.list-text').classList.add('underline');
+    this.label = this.parent.querySelector('label');
+    this.label.classList.toggle('checked');
+    this.index = this.parent.parentElement.getAttribute('data-index');
+    this.updateStatus(this.index,true);
+
+  }
+  markUnComplete(event) {
+    this.checkbox = event.target;
+    this.parent = this.checkbox.parentElement;
+    this.parent.querySelector('.list-text').classList.remove('underline');
+    this.label = this.parent.querySelector('label');
+    this.label.classList.toggle('checked');
+    this.index = this.parent.parentElement.getAttribute('data-index');
+    this.updateStatus(this.index,false);
+  }
+  updateStatus(index,status) {
+    const updatedTasks = this.toDoList.filter((tasks) => {
+      if (tasks.index === parseInt(index, 10)) {
+        tasks.completed = status;
+        return true;
+      }
+      return true;
+    });
+    this.toDoList = updatedTasks;
+    this.updateBookData(this.toDoList);
   }
 
   editList(index, value) {
@@ -115,10 +153,24 @@ class ToDoTasks {
   }
 
   clearList() {
-    localStorage.removeItem('tasksList');
-    this.toDoList = [];
+    const filteredArray = this.toDoList.filter(obj => obj.completed !== false);
+    console.log(filteredArray.length);
+    if (filteredArray.length === 0) {
+       localStorage.removeItem('tasksList');
+       this.toDoList = [];
+    }else{
+      this.toDoList = this.toDoList.filter((task) => task.completed !== true);
+
+      this.toDoList = this.toDoList.map((task, index) => {
+        task.index = index + 1;
+        return task;
+      });
+      this.updateBookData(this.toDoList);
+    }
+    console.log(this.toDoList);
     this.displayLists(this.toDoList);
   }
+ 
 }
 
 export default ToDoTasks;

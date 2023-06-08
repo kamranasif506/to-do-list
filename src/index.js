@@ -5,10 +5,7 @@ import ToDoTasks from '../modules/toDoTasks.js';
 const taskList = JSON.parse(localStorage.getItem('tasksList')) || [];
 const toDoTasks = new ToDoTasks(taskList);
 toDoTasks.displayLists(taskList);
-const checkboxes = document.querySelectorAll('.checkbox');
-checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener('click', (event) => toDoTasks.checkBoxClick(event));
-});
+
 
 const addListField = document.getElementById('addList');
 const addListBtn = document.getElementById('addListBtn');
