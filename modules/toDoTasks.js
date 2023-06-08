@@ -59,8 +59,6 @@ class ToDoTasks {
         }
       });
     });
-
-    
   }
 
   updateBookData(collectionData) {
