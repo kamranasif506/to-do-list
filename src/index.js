@@ -11,6 +11,7 @@ const addListField = document.getElementById('addList');
 const addListBtn = document.getElementById('addListBtn');
 const toDoListsDiv = document.getElementById('to-do-lists');
 const clearlist = document.getElementById('clear-list');
+const recycle = document.getElementById('recycle');
 addListBtn.addEventListener('click', () => {
   let childCount = toDoListsDiv.childElementCount;
   const { value } = addListField;
@@ -28,3 +29,6 @@ addListField.addEventListener('keydown', (event) => {
 clearlist.addEventListener('click', () => {
   toDoTasks.clearList();
 });
+recycle.addEventListener('click', () => {
+  toDoTasks.refreshList();
+})

@@ -170,7 +170,11 @@ class ToDoTasks {
     console.log(this.toDoList);
     this.displayLists(this.toDoList);
   }
- 
+  refreshList(){
+    localStorage.removeItem('tasksList');
+    this.toDoList = [];
+    this.displayLists(this.toDoList);
+  }
 }
 
 export default ToDoTasks;
