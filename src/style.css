@@ -110,7 +110,6 @@
   background-color: #fff;
   margin-right: 5px;
   vertical-align: middle;
-  
 }
 
 .list-icon {
@@ -129,18 +128,20 @@
 
 .checkbox-list input[type="checkbox"]:checked + label::after {
   content: "\f00c";
-  color: #2196F3;
-  font-family: "Font Awesome 5 Free";
+  color: #2196f3;
+  font-family: "Font Awesome 5 Free", sans-serif;
   position: absolute;
   background-color: #fff;
-  top: 0px;
+  top: 0;
   left: 29%;
   font-weight: 900;
   font-size: 20px;
 }
+
 .display {
   display: flex !important;
 }
+
 .hide {
   display: none !important;
 }
@@ -179,6 +180,7 @@
   color: rgba(0, 0, 0, 0.45);
   text-decoration: line-through;
 }
+
 .editing {
   background-color: #fffeca !important;
 }

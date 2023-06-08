@@ -63,6 +63,10 @@
 ### Key Features <a name="key-features"></a>
 
 - configured Webpacks
+- function to add new task
+- function to remove a task
+- function to edit the task
+- all changes stored in localStorage
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -141,9 +145,7 @@ You can deploy this project using github pages.
 ## 🔭 Future Features <a name="future-features"></a>
 
 
-- [ ] Add Tasks dynamically
-- [ ] Remove the tasks which are completed.
-- [ ] Edit the task when click on the task.
+- [ ] Remove the tasks which are marked as completed.
 - [ ] Remove Bulk Task that are selected.
 - [ ] Refresh the Task list.
 - [ ] Drag and drop functionality to re-arrange the tasks.

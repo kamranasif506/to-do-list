@@ -4,13 +4,11 @@ class ToDoTasks {
     this.toDoList = taskList;
     this.addListField = document.getElementById('addList');
     this.inputListitem = document.getElementById('addList');
-    
   }
 
   displayLists(taskList) {
     this.list = '';
     Object.values(taskList).forEach((task) => {
-       
       if (task.completed) {
         this.list += ` <li data-index="${task.index}">
                                 <div class="list-item">
@@ -32,98 +30,71 @@ class ToDoTasks {
     });
     this.toDoListsDiv.innerHTML = '';
     this.toDoListsDiv.innerHTML = this.list;
-        
+
     const listTextInputs = document.querySelectorAll('.list-text');
-    
-    listTextInputs.forEach(input => {
+
+    listTextInputs.forEach((input) => {
       input.addEventListener('focus', (event) => {
-        let parent = event.target.parentNode;
+        const parent = event.target.parentNode;
         parent.parentNode.classList.add('editing');
         event.target.classList.add('editing');
         // parent.querySelector('.list-icon').style.cursor = 'pointer';
-       
-       
       });
 
       input.addEventListener('blur', (event) => {
-        let parent = event.target.parentNode;
+        const parent = event.target.parentNode;
         parent.parentNode.classList.remove('editing');
         event.target.classList.remove('editing');
-        
+
         this.updateLists();
       });
 
       input.addEventListener('input', (event) => {
-        let index = event.target.parentNode.parentNode.getAttribute('data-index');
-        let value = event.target.value;
-        if(value === ''){
+        const index = event.target.parentNode.parentNode.getAttribute('data-index');
+        const { value } = event.target;
+        if (value === '') {
           this.removeListitem(index);
-        }else{
-          this.editList(index,value);
+        } else {
+          this.editList(index, value);
         }
-        
-      })
-    });
-    
-   
-    const removeTaskIcons = document.querySelectorAll('.list-icon');
-    removeTaskIcons.forEach((removeTaskIcon) => {
-      removeTaskIcon.addEventListener('click', (event) => {
-        console.log('dsa');
-        const listItem = event.target.closest('li');
-        const index = listItem.getAttribute('data-index');
-        this.removeListitem(index);
-        this.updateLists();
       });
     });
+
     
   }
+
   updateBookData(collectionData) {
     localStorage.setItem('tasksList', JSON.stringify(collectionData));
     this.addListField.value = '';
   }
-  addToList(value,completed,index) {
-    this.toDoList.push({value,completed,index});
-    this.updateBookData(this.toDoList); 
-    this.displayLists(this.toDoList);               
+
+  addToList(value, completed, index) {
+    this.toDoList.push({ value, completed, index });
+    this.updateBookData(this.toDoList);
+    this.displayLists(this.toDoList);
   }
+
   checkBoxClick(event) {
     this.checkbox = event.target;
-    this.checkboxId = this.checkbox.getAttribute('id');
-    this.checkboxIcon = `<i class="fas fa-check checked" data-cbecked="true" id="${this.checkboxId}"></i>`;
-    this.checkbox.style.display = 'none';
-    this.checkbox.nextElementSibling.outerHTML = this.checkboxIcon;
+
     this.parent = this.checkbox.parentElement;
     this.parent.querySelector('.list-text').classList.add('underline');
-    const index  = this.parent.parentElement.getAttribute('data-index');
+  }
 
-    const checkedIcon = this.parent.querySelector('.checked');
-    checkedIcon.addEventListener('click', (event) => this.checkedIconClick(event));
-  
-  }
-  checkedIconClick(event) {
-    const checkedIcon = event.target;
-    const checkboxId = checkedIcon.getAttribute('id');
-    const checkbox = document.getElementById(checkboxId);
-    checkbox.style.display = 'block';
-    checkedIcon.remove();
-  }
-  editList(index,value){
-    const updatedTasks = this.toDoList.filter(tasks => {
-        if (tasks.index === parseInt(index)) {
-          tasks.value = value;
-          return true;
-        }
+  editList(index, value) {
+    const updatedTasks = this.toDoList.filter((tasks) => {
+      if (tasks.index === parseInt(index, 10)) {
+        tasks.value = value;
         return true;
-      });
-    this.toDoList = updatedTasks;  
+      }
+      return true;
+    });
+    this.toDoList = updatedTasks;
     this.updateBookData(this.toDoList);
   }
-  removeListitem(index){
-        
-    this.toDoList = this.toDoList.filter(task => {
-      return task.index !== parseInt(index);
-    });
+
+  removeListitem(index) {
+    this.toDoList = this.toDoList.filter((task) => task.index !== parseInt(index, 10));
 
     this.toDoList = this.toDoList.map((task, index) => {
       task.index = index + 1;
@@ -131,11 +102,21 @@ class ToDoTasks {
     });
     this.updateBookData(this.toDoList);
   }
+
   updateLists() {
-    
     this.displayLists(this.toDoList);
+    const removeTaskIcons = document.querySelectorAll('.list-icon');
+    removeTaskIcons.forEach((removeTaskIcon) => {
+      removeTaskIcon.addEventListener('click', (event) => {
+        const listItem = event.target.closest('li');
+        const index = listItem.getAttribute('data-index');
+        this.removeListitem(index);
+        this.updateLists();
+      });
+    });
   }
-  clearList(){
+
+  clearList() {
     localStorage.removeItem('tasksList');
     this.toDoList = [];
     this.displayLists(this.toDoList);
