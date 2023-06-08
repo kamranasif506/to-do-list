@@ -33,7 +33,39 @@ class ToDoTasks {
     this.toDoListsDiv.innerHTML = '';
     this.toDoListsDiv.innerHTML = this.list;
         
-    
+    const listTextInputs = document.querySelectorAll('.list-text');
+
+    listTextInputs.forEach(input => {
+      input.addEventListener('focus', (event) => {
+        let parent = event.target.parentNode;
+        parent.parentNode.classList.add('editing');
+        event.target.classList.add('editing');
+        parent.querySelector('.list-icon').classList.remove('fa-ellipsis-vertical');
+        parent.querySelector('.list-icon').classList.add('fa-trash');
+        parent.querySelector('.list-icon').style.cursor = 'pointer';
+      });
+
+      input.addEventListener('blur', (event) => {
+        let parent = event.target.parentNode;
+        parent.parentNode.classList.remove('editing');
+        event.target.classList.remove('editing');
+        parent.querySelector('.list-icon').classList.remove('fa-trash');
+        parent.querySelector('.list-icon').classList.add('fa-ellipsis-vertical');
+        parent.querySelector('.list-icon').style.cursor = 'all-scroll';
+        this.updateLists();
+      });
+
+      input.addEventListener('input', (event) => {
+        let index = event.target.parentNode.parentNode.getAttribute('data-index');
+        let value = event.target.value;
+        if(value === ''){
+          this.removeListitem(index);
+        }else{
+          this.editList(index,value);
+        }
+        
+      })
+    });
 
   }
   updateBookData(collectionData) {
