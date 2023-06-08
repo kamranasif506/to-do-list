@@ -64,7 +64,6 @@ export default function displayLists(taskList) {
       removeListitem(index, taskList);
       const toDoList = JSON.parse(localStorage.getItem('tasksList')) || [];
       displayLists(toDoList);
-      // updateLists(taskList);
     });
   });
 
