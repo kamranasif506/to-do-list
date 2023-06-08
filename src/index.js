@@ -1,10 +1,12 @@
 import './style.css';
 import '@fortawesome/fontawesome-free/css/all.css';
-import ToDoTasks from '../modules/toDoTasks.js';
+import addToList from '../modules/addToList.js';
+import clearList from '../modules/clearList.js';
+import refreshList from '../modules/refreshList.js';
+import displayLists from '../modules/displayLists.js';
 
 const taskList = JSON.parse(localStorage.getItem('tasksList')) || [];
-const toDoTasks = new ToDoTasks(taskList);
-toDoTasks.displayLists(taskList);
+displayLists(taskList);
 
 const addListField = document.getElementById('addList');
 const addListBtn = document.getElementById('addListBtn');
@@ -15,19 +17,23 @@ addListBtn.addEventListener('click', () => {
   let childCount = toDoListsDiv.childElementCount;
   const { value } = addListField;
   childCount += 1;
-  toDoTasks.addToList(value, false, childCount);
+  const refreshTaskList = JSON.parse(localStorage.getItem('tasksList')) || [];
+  addToList(value, false, childCount, refreshTaskList);
 });
 addListField.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     let childCount = toDoListsDiv.childElementCount;
     const { value } = addListField;
     childCount += 1;
-    toDoTasks.addToList(value, false, childCount);
+    const refreshTaskList = JSON.parse(localStorage.getItem('tasksList')) || [];
+    addToList(value, false, childCount, refreshTaskList);
   }
 });
 clearlist.addEventListener('click', () => {
-  toDoTasks.clearList();
+  const refreshTaskList = JSON.parse(localStorage.getItem('tasksList')) || [];
+  clearList(refreshTaskList);
 });
 recycle.addEventListener('click', () => {
-  toDoTasks.refreshList();
+  const refreshTaskList = JSON.parse(localStorage.getItem('tasksList')) || [];
+  refreshList(refreshTaskList);
 });
