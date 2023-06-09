@@ -9,7 +9,6 @@ export default function updateLists(toDoList) {
     const listItem = event.target.closest('li');
     const index = listItem.getAttribute('data-index');
     removeListitem(index, toDoList);
-    // updateLists(toDoList);
   }
 
   removeTaskIcons.forEach((removeTaskIcon) => {

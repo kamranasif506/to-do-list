@@ -65,10 +65,8 @@ class ToDoTasks {
       checkbox.addEventListener('change', (event) => {
         if (event.target.checked) {
           this.markComplete(event);
-          // label.classList.toggle('checked');
         } else {
           this.markUnComplete(event);
-          // label.classList.toggle('checked');
         }
       });
     });
