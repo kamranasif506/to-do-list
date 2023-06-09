@@ -75,7 +75,7 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 
-- [Live Demo Link](https://kamranasif506.github.io/to-do-list/dist)
+- [Live Demo Link](https://kamranasif506.github.io/to-do-list/dist/index.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
