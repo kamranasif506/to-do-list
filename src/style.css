@@ -124,6 +124,7 @@
 
 .checkbox-list input[type="checkbox"]:checked + label::before {
   background-color: transparent;
+  border: none;
 }
 
 .checkbox-list input[type="checkbox"]:checked + label::after {
@@ -131,7 +132,6 @@
   color: #2196f3;
   font-family: "Font Awesome 5 Free", sans-serif;
   position: absolute;
-  background-color: #fff;
   top: 0;
   left: 29%;
   font-weight: 900;
