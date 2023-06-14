@@ -1,5 +1,11 @@
 export default function updateBookData(collectionData) {
-  const addListField = document.getElementById('addList');
   localStorage.setItem('tasksList', JSON.stringify(collectionData));
-  addListField.value = '';
+  const tasksList = JSON.parse(localStorage.getItem('tasksList'));
+
+  const addListField = document.getElementById('addList');
+  if (addListField) {
+    addListField.value = '';
+  }
+
+  return tasksList;
 }
