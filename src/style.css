@@ -79,9 +79,7 @@
   flex: 8.5;
   border: 0;
   height: 100%;
-  padding: 3%;
-  padding-top: 3%;
-  padding-bottom: 3%;
+  padding: 3% 3%;
   font-size: 16px;
   color: #000;
 }
@@ -95,8 +93,7 @@
   display: inline-block;
   cursor: pointer;
   flex: 0.5;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: auto 0px;
   padding-left: 2%;
   position: relative;
 }

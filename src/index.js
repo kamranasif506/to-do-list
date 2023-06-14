@@ -18,7 +18,10 @@ addListBtn.addEventListener('click', () => {
   const { value } = addListField;
   childCount += 1;
   const refreshTaskList = JSON.parse(localStorage.getItem('tasksList')) || [];
-  addToList(value, false, childCount, refreshTaskList);
+  if(value !== ''){
+    addToList(value, false, childCount, refreshTaskList);
+  }
+  
 });
 addListField.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
@@ -26,7 +29,11 @@ addListField.addEventListener('keydown', (event) => {
     const { value } = addListField;
     childCount += 1;
     const refreshTaskList = JSON.parse(localStorage.getItem('tasksList')) || [];
-    addToList(value, false, childCount, refreshTaskList);
+
+    if(value !== ''){
+      addToList(value, false, childCount, refreshTaskList);
+    }
+    
   }
 });
 clearlist.addEventListener('click', () => {
