@@ -93,7 +93,7 @@
   display: inline-block;
   cursor: pointer;
   flex: 0.5;
-  margin: auto 0px;
+  margin: auto 0;
   padding-left: 2%;
   position: relative;
 }
