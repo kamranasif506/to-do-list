@@ -8,4 +8,5 @@ export default function removeListitem(index, toDoList) {
     return task;
   });
   updateBookData(toDoList);
+  return toDoList;
 }
