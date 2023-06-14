@@ -11,7 +11,6 @@ describe('addToList', () => {
   let toDoList;
 
   beforeEach(() => {
-    // Set up the initial to-do list
     toDoList = [
       { value: 'Task 1', completed: false, index: 1 },
       { value: 'Task 2', completed: false, index: 2 },
@@ -43,7 +42,6 @@ describe('removeListitem', () => {
   let toDoList;
 
   beforeEach(() => {
-    // Set up the initial to-do list
     toDoList = [
       { index: 1, task: 'Task 1' },
       { index: 2, task: 'Task 2' },
@@ -52,7 +50,6 @@ describe('removeListitem', () => {
   });
 
   afterEach(() => {
-    // Clear the mock calls after each test
     jest.clearAllMocks();
   });
 
@@ -61,13 +58,11 @@ describe('removeListitem', () => {
 
     const updatedList = removeListitem(indexToRemove, toDoList);
 
-    // Verify that the item is removed from the list
     expect(updatedList).toEqual([
       { index: 1, task: 'Task 1' },
       { index: 2, task: 'Task 3' },
     ]);
 
-    // Verify that the updateBookData function is called with the updated list
     expect(updateBookData).toHaveBeenCalledWith(updatedList);
   });
 
@@ -76,13 +71,11 @@ describe('removeListitem', () => {
 
     const updatedList = removeListitem(indexToRemove, toDoList);
 
-    // Verify that the tasks are reindexed correctly
     expect(updatedList).toEqual([
       { index: 1, task: 'Task 2' },
       { index: 2, task: 'Task 3' },
     ]);
 
-    // Verify that the updateBookData function is called with the updated list
     expect(updateBookData).toHaveBeenCalledWith(updatedList);
   });
 });
