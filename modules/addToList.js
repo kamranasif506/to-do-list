@@ -5,4 +5,6 @@ export default function addToList(value, completed, index, toDoList) {
   toDoList.push({ value, completed, index });
   updateBookData(toDoList);
   displayLists(toDoList);
+  console.log(toDoList);
+  return toDoList;
 }
