@@ -1,11 +1,11 @@
 import 'jest-localstorage-mock';
-import addToList from './modules/addToList.js';
-import displayLists from './modules/displayLists.js';
-import updateBookData from './modules/updateBookData.js';
-import removeListitem from './modules/removeListitem.js';
+import addToList from '../modules/addToList.js';
+import displayLists from '../modules/displayLists.js';
+import updateBookData from '../modules/updateBookData.js';
+import removeListitem from '../modules/removeListitem.js';
 
-jest.mock('./modules/updateBookData.js');
-jest.mock('./modules/displayLists.js');
+jest.mock('../modules/updateBookData.js');
+jest.mock('../modules/displayLists.js');
 
 describe('addToList', () => {
   let toDoList;

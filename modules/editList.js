@@ -10,4 +10,5 @@ export default function editList(index, value, toDoList) {
   });
   toDoList = updatedTasks;
   updateBookData(toDoList);
+  return toDoList;
 }
