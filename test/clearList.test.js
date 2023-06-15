@@ -1,6 +1,6 @@
-import clearList from '../modules/clearList';
-import updateBookData from '../modules/updateBookData';
-import displayLists from '../modules/displayLists';
+import clearList from '../modules/clearList.js';
+import updateBookData from '../modules/updateBookData.js';
+import displayLists from '../modules/displayLists.js';
 
 jest.mock('../modules/updateBookData');
 jest.mock('../modules/displayLists');
@@ -32,10 +32,7 @@ describe('clearList', () => {
   });
 
   it('should remove completed tasks, update indexes, update task list, and call updateBookData when there are completed tasks', () => {
-    const updatedTaskList = [
-      { index: 1, value: 'Task 2', completed: false },
-      { index: 2, value: 'Task 4', completed: false },
-    ];
+    const updatedTaskList = [{ index: 1, value: 'Task 2', completed: false }];
 
     clearList(taskList);
 

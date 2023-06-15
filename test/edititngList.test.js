@@ -1,5 +1,5 @@
-import editList from '../modules/editList';
-import updateBookData from '../modules/updateBookData';
+import editList from '../modules/editList.js';
+import updateBookData from '../modules/updateBookData.js';
 
 jest.mock('../modules/updateBookData', () => jest.fn());
 

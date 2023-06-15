@@ -1,5 +1,5 @@
-import updateStatus from '../modules/updateStatus';
-import updateBookData from '../modules/updateBookData';
+import updateStatus from '../modules/updateStatus.js';
+import updateBookData from '../modules/updateBookData.js';
 
 jest.mock('../modules/updateBookData');
 
@@ -39,9 +39,9 @@ describe('updateStatus', () => {
 
   it('should return the original toDoList if the index is not found', () => {
     const invalidIndex = '4';
-  
+
     const result = updateStatus(invalidIndex, status, toDoList);
-  
+
     expect(result).toEqual(toDoList);
     expect(updateBookData).not.toHaveBeenCalled();
   });
